@@ -3,9 +3,8 @@ from implemented.SSLCertReader import SSLCertReader
 from implemented.MSEWebMailer import MSEWebMailer
 from implemented.NotifierList import NotifierList
 from implemented.SlackNotifier import SlackNotifier
-from interface.Notifier import Notifier
-import os
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
