@@ -16,7 +16,7 @@ class MSEWebMailer(Notifier):
     def notify(self, hostname, day):
 
         body = f"""
-            The SSL certificate for {hostname} is expiring within on {day}. 
+            The SSL certificate for {hostname} is expiring on {day}. 
             Please renew the certificate as soon as possible.
         """
 
