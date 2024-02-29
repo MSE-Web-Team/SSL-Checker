@@ -28,4 +28,4 @@ notifierList = NotifierList([
     #)
 ])
 
-CertChecker(notifierList, SSLCertReader(), 100).checkHostnames(hostnames)
+CertChecker(notifierList, SSLCertReader(), 160).checkHostnames(hostnames)

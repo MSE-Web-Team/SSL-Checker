@@ -1,7 +1,10 @@
 FROM ubuntu:20.04
-RUN apt-get update && apt-get install -y python3.9 python3.9-dev
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y python3.9 python3.9-dev python3-pip && apt-get clean && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt .
 
-RUN --mount=type=cache,mode=0755,target=/root/.cache pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 COPY . .
-CMD ["python"]
+CMD ["python3", "main.py"]
