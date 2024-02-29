@@ -11,21 +11,16 @@ load_dotenv()
 
 hostnames = os.getenv("HOSTS").split(',')
 
-class MockNotifier(Notifier):
-    def notify(self, hostname, day):
-        print("sending notification")
-
 notifierList = NotifierList([
-    MockNotifier()
-    #MSEWebMailer(
-    #    smtp_hostname=os.getenv("SMTP_HOST"),
-    #    sender=os.getenv("SMTP_SENDER"),
-    #    notified=os.getenv("SMTP_SENDTO")
-    #),
-    #SlackNotifier(
-    #    token=os.getenv("SLACK_TOKEN"), 
-    #    channel_id=os.getenv("SLACK_CHANNEL")
-    #)
+    MSEWebMailer(
+        smtp_hostname=os.getenv("SMTP_HOST"),
+        sender=os.getenv("SMTP_SENDER"),
+        notified=os.getenv("SMTP_SENDTO")
+    ),
+    SlackNotifier(
+        token=os.getenv("SLACK_TOKEN"), 
+        channel_id=os.getenv("SLACK_CHANNEL")
+    )
 ])
 
 CertChecker(notifierList, SSLCertReader(), 160).checkHostnames(hostnames)
